@@ -1,0 +1,85 @@
+body {
+	background:#ededed;
+	}
+	
+/*************header*****/
+p,h1,h2,h3,h4,h5,h6 {
+	color:#000;
+}
+p{
+	text-align:justify;
+	line-height:1.5;}
+
+
+header {
+	background: #4c8f97;
+	padding-top: 100px;
+	position:relative;
+	}
+
+
+header h1 {
+    color: #fff;
+    background: #000;
+    padding: 0 10px;
+    width: 381px;
+    margin-top: -25px;
+    position: absolute;
+}
+
+#signup {
+	width: 660px;
+	display: block;
+	margin: 20px 0 10px 0;
+}
+
+#signup .suLightTxt {
+	color: #ccc;
+}
+
+#signup .suInpTxt {
+	width: 230px;
+	margin: 5px 0;
+	color: #999;
+	font-family: "Trebuchet MS";
+	font-size: 16px;
+	border: 1px inset #ccc;
+}
+
+#signup .suMain {
+	width: 660px;
+	display: block;
+	margin-bottom: 10px;
+}
+
+#signup .suColL {
+	width: 100px;
+	display: block;
+	float: left;
+	margin-right: 10px;
+	padding-top: 10px;
+	line-height: 18px;
+}
+
+#signup .suColR {
+	width: 550px;
+	display: block;
+	float: left;
+	line-height: 28px;
+
+}
+footer {
+    background: #4c8f97;
+    padding: 20px 0;
+    margin-top: 100px;
+}
+	
+footer p {
+	color:#fff;}
+	
+table {
+    margin-top: 70px;
+}
+td, th {
+    padding: 10px;
+}

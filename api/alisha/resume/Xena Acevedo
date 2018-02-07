@@ -1,0 +1,175 @@
+<?php
+$link = mysql_connect('localhost', 'root', '');
+if (!$link) {
+    die('Could not connect to database');
+}
+mysql_select_db('my_db');
+if ($_SERVER['REQUEST_METHOD'] == "POST") {  // if request method is post
+    $std_name = $_POST['std_name'];
+    $std_age = $_POST['std_age'];
+    $std_address = $_POST['std_address'];
+    $gender = $_POST['gender'];
+    $dob = $_POST['dob'];
+    $status = $_POST['status'];
+    $remarks = $_POST['remarks'];
+    $std_id = $_POST['std_id'];
+    $mode = $_POST['mode'];
+    $isFormValid = true;
+    $msg = "";
+    if ($std_name == "") {
+        $isFormValid = false;
+        $msg.="Name is Empty !!<br/>";
+    }
+    if ($std_age == "") {
+        $isFormValid = false;
+        $msg.="Age is Empty !!<br/>";
+    }
+    if ($gender == "") {
+        $isFormValid = false;
+        $msg.="Gender is Empty !!<br/>";
+    }
+    if ($isFormValid == true) {
+        if($mode=='I'){ // if there I in mode then insert other wise update.
+            $sql = "insert into student(name,
+                        age,
+                        address,
+                        gender,
+                        dob,
+                        status,
+                        remarks) 
+                    values('$std_name',
+                        '$std_age',
+                        '$std_address',
+                        '$gender',
+                        '$dob',
+                        '$status',
+                        '$remarks')";
+        }else{ // it will only show the area now to load the data we have to see the mode u
+          $sql = "update student
+                    set
+                        name='$std_name',
+                        age='$std_age',
+                        address='$std_address',
+                        gender='$gender',
+                        dob='$dob',
+                        status='$status',
+                        remarks='$remarks'
+               where
+                std_id='$std_id'
+            ";  
+        }        
+        if (mysql_query($sql)) {
+                 echo '<script language="javascript">
+                window.location="index.php";
+            </script>';
+        } else {
+            $msg="Error While Inserting"; 
+        }
+    }
+}
+// TO load data to the form.
+$mode=$_GET['mode'];
+$std_id=$_GET['std_id'];
+if($mode=='U'){
+   $sql = "select * from student where std_id='$std_id'";
+   $result = mysql_query($sql); 
+   $row = mysql_fetch_assoc($result);
+}
+?>
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>My First Form</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <link href="style.css" rel="stylesheet" type="text/css"/>
+        <script src="validate.js" type="text/javascript" language="javascript"></script>
+    </head>
+    <body >
+        <div id="wrapper">
+            <div id="header">
+                <h1>Student Registration Form</h1>
+            </div>
+            <div id="content">
+                <form name="std_reg" id="std_reg" action="" method="post" onsubmit="return validateForm(this)">
+                   <input type="hidden" name="std_id" value="<?php echo $row['std_id']?>"/>
+                   <input type="hidden" name="mode" value="<?php echo $mode?>"/> //to send mode by hidden to show it we use fire bug.
+                    <table width="80%" border="0">
+                        <tr>
+                            <td colspan="2" align="right">
+                                <a href="index.php">Back</a>
+                            </td>
+                        </tr>
+                        <tr>
+                          <td colspan="2">
+                              <div class="err_msg">
+                                 <?php 
+                                  echo $msg;
+                                 ?> 
+                              </div>
+                            </td>  
+                        </tr>
+                        <tr>
+                            <td>Name</td>
+                            <td><input type="text" value="<?php echo $row['name'] ?>" name="std_name" id="std_name" size="40" maxlength="100"/></td>
+                        </tr>
+                        <tr>
+                            <td>Age</td>
+                            <td><input type="text" value="<?php echo $row['age'] ?>" name="std_age" id="std_age" size="10" maxlength="2"/></td>
+                        </tr>
+                        <tr>
+                            <td>Address</td>
+                            <td><input type="text" value="<?php echo $row['address'] ?>" name="std_address" id="std_address" size="60" maxlength="200"/></td>
+                        </tr>
+                        <tr>
+                            <td>Gender</td>
+                            <td>
+                                <select name="gender" id="gender">
+                                    <option value="">--Select Gender--</option>
+                                    <option value="M" <?php if($row['gender']=='M'){ echo 'selected="selected"';}?>>Male</option>
+                                    <option value="F" <?php if($row['gender']=='F'){ echo 'selected="selected"';}?>>Female</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Date of Birth</td>
+                            <td><input type="text" value="<?php echo $row['dob'] ?>" name="dob" id="dob" size="30" maxlength="15"/></td>
+                        </tr>
+                        <!--<tr>
+                            <td>Hobbies</td>
+                            <td>
+                                <input type="checkbox" name="dance" id="dance" value="dance"/>Dance<br/>
+                                <input type="checkbox" name="music" id="music" value="music"/>Music<br/>
+                                <input type="checkbox" name="swimming" id="swimming" value="swimming"/>Swimming<br/>
+                                <input type="checkbox" name="painting" id="painting" value="painting"/>Painting<br/>
+                            </td>
+                        </tr>-->
+                        <tr>
+                            <td>Status</td>
+                            <td>
+                                <input type="radio" name="status" id="status" value="Y" <?php if($row['status']=='Y'){ echo 'checked="checked"';}?>/>Active
+                                <input type="radio" name="status" id="status1" value="N" <?php if($row['status']=='N'){ echo 'checked="checked"';}?>/>In-Active
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Remarks</td>
+                            <td>
+                                <textarea rows="5" cols="50" name="remarks" id="remarks"><?php echo $row['remarks'] ?></textarea>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" align="center">
+                                <input type="submit" name="submit" id="submit" value="Save"/>&nbsp;&nbsp;&nbsp;
+                                <input type="reset" name="reset" id="reset" value="Clear"/>
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+            <div id="footer">
+                <span class="footer-link">
+                    &COPY;DIT Solution 
+                </span>
+            </div>
+        </div>
+    </body>
+</html>
