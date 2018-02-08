@@ -1,0 +1,196 @@
+@charset "utf-8";
+/* CSS Document  Template 1*/
+
+* {
+	margin:0;
+	padding:0;}
+	
+.container {
+	width: 900px;
+	margin: 0 auto;}
+.clear {
+	clear:both;}
+.body {
+	background: #222;
+	
+	}
+p,h1, h2, h3, h4, h5, h6 {
+	color:#FFF;
+	font-family:Arial, Helvetica, sans-serif;
+	}
+
+/*************header*****************/
+.header {
+	padding: 40px 0;}
+.logo {
+	float:left;
+	width: 40%;
+	box-sizing:border-box;
+	}
+.top-mid {
+	float:left;
+	width: 40%;
+	border-left: solid 2px #92ba26;
+	padding-left: 10px;
+	box-sizing:border-box;
+	}
+.top-right{
+	float:left;
+	width: 20%;
+	box-sizing:border-box;
+	text-align: right;
+	}
+.top-right button {
+	background: #92ba26;
+	border-radius: 4px;
+	border:none;
+	padding: 5px 10px;
+	}
+/********************************banner ****************/
+.banner img {
+	width: 100%;}
+
+/********************menu **************/
+.menu {
+	background:url(images/menubg.png) repeat-x #92ba26;  /***********if menu needs to be lengthy and gradient use *********/
+				/*****while using effects in menu, size issues comes, thus******/
+	 
+	
+	}
+.menu ul {
+	list-style:none;
+	}
+.menu li {
+	float:left;
+	border-left: solid 2px #92ba26; 
+	border-right: solid 2px #1d681b;   
+	padding: 14px 25px;
+	width: 20%;
+	box-sizing:border-box;
+	transition: all ease 0.5s;
+	}
+.menu a {
+	text-decoration:none;
+	color:#000;
+	font-weight: 600;
+	font-size: 16px;
+	transition: all ease 0.5s;
+	
+	}
+.menu li:hover {
+	background:#1d681b;
+	font-size: 24px; 
+	}
+.menu li:hover a {
+	color:#FFF;
+	}
+.home {
+	background: #1d681b;
+	position:relative;
+	border-left: none !important;    /*******border left not working ******/
+	
+
+	}
+.active a{
+	color:#FFF;     /*****color white but still comes black*****/
+}
+.menu li:hover, .active {   /*****difference between menu:li hover ******/
+	padding: 15px 40px;
+	background: #1d681b;}
+.menu li:hover,.active a{
+	font-size: 16px;			/*****which font and color it picks******/
+	color: #000;}
+	
+.dropdown li{
+	float:none;
+	border-right:none;
+	border-bottom: solid 2px #1d681b;
+	background: #92ba26;
+	width: 100%;}
+.dropdown {
+	display:none;
+	position:absolute;
+	top: 50px;
+	left:0;
+	width: 150px;
+	background: #92ba26;}
+.menu li:hover .dropdown {
+	display:block;}
+
+/*********************content*******************/
+.content {
+	padding-top: 40px;}
+.left {
+	float:left;
+	width: 40%;
+	box-sizing:border-box;
+	padding: 0 15px;}
+	
+.box{ padding: 20px 0;}
+
+.box h3 {
+	color:#1d681b;
+	padding-bottom: 5px;  }
+.box p{
+	text-align:justify;}
+.green a {
+	color:#1d681b;}
+
+.right {
+	float:left;
+	width: 60%;
+	box-sizing:border-box;
+	padding: 0 15px;}
+.btn {
+	background: #5f5d5d;
+	border:solid 1px #8d8a8a;
+	border-radius: 4px;
+	color: #fff;
+	padding: 5px 15px;
+	float: right;
+	margin: 10px 0;}
+
+.left-bx {
+	float:left;
+	width: 60%;
+	box-sizing:border-box;
+	padding: 20px 15px;}
+	
+.right-bx {
+	float:left;
+	width: 40%;
+	box-sizing:border-box;
+	padding: 45px 15px;}
+.right-bx ul {
+	list-style:square;
+	color: #1d681b;
+	padding-left: 50px;}
+.left-bx .btn {
+	float:none;}
+.padding {
+	padding: 30px 0;}
+/************************footer *************/
+.footer {
+	border-top: solid 2px #1d681b;
+	padding: 10px 5px; }
+.foot-left {
+	width: 50%;
+	float:left;
+	box-sizing:border-box;}
+.foot-left a {
+	color:#1d681b;}
+.foot-right{
+	width: 50%;
+	float:left;
+	box-sizing:border-box;
+	padding-left: 100px;}
+.foot-right{
+	color:#FFF;}
+.privacy {
+	padding-left: 10px;
+	border-left: solid 1px #1d681b;}
+.terms {
+	padding-right: 10px;}
+
+
+
